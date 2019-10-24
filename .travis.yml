@@ -1,9 +1,13 @@
-dons:
+addons:
   sonarcloud:
     organization: "mariemamari"
     token:
       secure: "5304df747ee5f2c4da6fa395c132879e5bbabaef" # encrypted value of your token
 
-script:
+
+before_script:
+  - composer install --prefer-source
+
+script: ./vendor/bin/phpunit --colors tests
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
   - sonar-scanner
